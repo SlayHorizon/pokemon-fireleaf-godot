@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dyo0n6ncwx6f1" path="res://source/title_screen/title_screen.gd" id="1_518vd"]
 [ext_resource type="Texture2D" uid="uid://crgom4vir4vqv" path="res://assets/sprites/title_screen/firered_pokemon_art.png" id="2_ifn6v"]
-[ext_resource type="Shader" uid="uid://cm5n4mwparevu" path="res://source/title_screen/title_screen2.gdshader" id="3_ifn6v"]
+[ext_resource type="Shader" uid="uid://cm5n4mwparevu" path="res://source/title_screen/flash.gdshader" id="3_ifn6v"]
 [ext_resource type="Texture2D" uid="uid://i3821vwtlnd5" path="res://assets/sprites/title_screen/pokemon_title_logo.png" id="3_ps8sl"]
 [ext_resource type="Texture2D" uid="uid://bnp7ae46yu8rb" path="res://assets/sprites/title_screen/firered_title_logo.png" id="4_p87ct"]
 [ext_resource type="Texture2D" uid="uid://el2iphkufh3o" path="res://assets/sprites/title_screen/press_start.png" id="6_p87ct"]

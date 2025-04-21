@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://dyn4yihale53c"]
+[gd_scene load_steps=14 format=3 uid="uid://dyn4yihale53c"]
 
 [ext_resource type="Script" uid="uid://blac7cg7gftre" path="res://source/overworld/player.gd" id="1_rxuw6"]
 [ext_resource type="Texture2D" uid="uid://dfm43a0mitktk" path="res://assets/sprites/people/red/red_normal.png" id="2_vt53w"]
+[ext_resource type="Texture2D" uid="uid://balu0e7yi6fvb" path="res://assets/sprites/environment/tall_grass.png" id="3_vt53w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8a6jw"]
 atlas = ExtResource("2_vt53w")
@@ -105,8 +106,27 @@ animations = [{
 script = ExtResource("1_rxuw6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(8, 0)
 sprite_frames = SubResource("SpriteFrames_kary1")
 animation = &"up_walk"
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 enabled = false
+
+[node name="TallGrass" type="Sprite2D" parent="."]
+position = Vector2(24, 40)
+texture = ExtResource("3_vt53w")
+
+[node name="TallGrass3" type="Sprite2D" parent="."]
+position = Vector2(56, 40)
+texture = ExtResource("3_vt53w")
+
+[node name="TallGrass4" type="Sprite2D" parent="."]
+position = Vector2(88, 40)
+texture = ExtResource("3_vt53w")
+
+[node name="TallGrass2" type="Sprite2D" parent="."]
+position = Vector2(8, 24)
+texture = ExtResource("3_vt53w")
+vframes = 5
+frame = 1

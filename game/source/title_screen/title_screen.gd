@@ -27,9 +27,10 @@ var can_press_start: bool = false
 func _ready() -> void:
 	set_version_theme(Global.version)
 	default_state()
+	startup_animation.call_deferred()
 
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	if Input.is_key_pressed(KEY_TAB):
 		startup_animation()
 	if Input.is_action_just_pressed("ui_accept") and can_press_start:

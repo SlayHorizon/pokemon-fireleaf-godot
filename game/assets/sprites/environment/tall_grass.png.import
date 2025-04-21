@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cksamy8r1d1vi"
-path="res://.godot/imported/Game Boy Advance - Pokemon FireRed LeafGreen - Intro and Title.png-b9768b6e33b10962680c424c378db024.ctex"
+uid="uid://balu0e7yi6fvb"
+path="res://.godot/imported/tall_grass.png-9fa0d0bfb446adad01dad588944a0418.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Game Boy Advance - Pokemon FireRed LeafGreen - Intro and Title.png"
-dest_files=["res://.godot/imported/Game Boy Advance - Pokemon FireRed LeafGreen - Intro and Title.png-b9768b6e33b10962680c424c378db024.ctex"]
+source_file="res://assets/sprites/environment/tall_grass.png"
+dest_files=["res://.godot/imported/tall_grass.png-9fa0d0bfb446adad01dad588944a0418.ctex"]
 
 [params]
 
