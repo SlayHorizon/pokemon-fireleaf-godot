@@ -1,8 +1,31 @@
-[gd_scene load_steps=14 format=3 uid="uid://dyn4yihale53c"]
+[gd_scene load_steps=33 format=4 uid="uid://dyn4yihale53c"]
 
 [ext_resource type="Script" uid="uid://blac7cg7gftre" path="res://source/overworld/player.gd" id="1_rxuw6"]
+[ext_resource type="Script" uid="uid://cf8vflpy3tw5x" path="res://source/overworld/overworld.gd" id="1_sillp"]
 [ext_resource type="Texture2D" uid="uid://dfm43a0mitktk" path="res://assets/sprites/people/red/red_normal.png" id="2_vt53w"]
-[ext_resource type="Texture2D" uid="uid://balu0e7yi6fvb" path="res://assets/sprites/environment/tall_grass.png" id="3_vt53w"]
+[ext_resource type="Texture2D" uid="uid://ep2ftuwn7ko8" path="res://assets/sprites/items/icons/item_icons.png" id="4_8a6jw"]
+[ext_resource type="Script" uid="uid://bpr5jqp60g4d5" path="res://source/system/item/item_icon/item_icon.gd" id="5_wec52"]
+[ext_resource type="Texture2D" uid="uid://cqnb0oca14drf" path="res://assets/sprites/gui/backgrounds/bg_blue.png" id="7_akgie"]
+[ext_resource type="Resource" uid="uid://dw5gjjjwxarp0" path="res://source/system/item/collection/aurora_ticket.tres" id="7_bi2s7"]
+[ext_resource type="Texture2D" uid="uid://vs4sb5t4jpa1" path="res://assets/sprites/gui/inventory/inventory_list.png" id="8_ngjjw"]
+[ext_resource type="Texture2D" uid="uid://norqwc0f0bx7" path="res://assets/sprites/gui/inventory/inventory_dialog.png" id="9_kary1"]
+[ext_resource type="Texture2D" uid="uid://bbl6h3p3frko2" path="res://assets/sprites/gui/inventory/bags/bag_shadow.png" id="10_bl835"]
+[ext_resource type="Texture2D" uid="uid://di3f1uyghpmal" path="res://assets/sprites/gui/inventory/bags/berry_pouch.png" id="11_opg1a"]
+[ext_resource type="FontFile" uid="uid://c2on4rplk6ncr" path="res://assets/fonts/pokemon-firered-leafgreen-font.otf" id="12_kary1"]
+[ext_resource type="Texture2D" uid="uid://bb0bwgjoigooh" path="res://assets/sprites/gui/inventory/bags/arrows.png" id="13_bl835"]
+[ext_resource type="Texture2D" uid="uid://5ima6yd3ofae" path="res://assets/sprites/environment/tilesets/overworld_tileset.png" id="13_hukvr"]
+[ext_resource type="PackedScene" uid="uid://bk3vx6t3c72ke" path="res://source/overworld/tall_grass/tall_grass.tscn" id="14_sillp"]
+[ext_resource type="Texture2D" uid="uid://basi124fydu0u" path="res://assets/sprites/environment/tilesets/3771.png" id="15_lvc2m"]
+[ext_resource type="Texture2D" uid="uid://dxuiabxa8ftmd" path="res://assets/sprites/environment/tilesets/3736.png" id="16_d3wmf"]
+[ext_resource type="Texture2D" uid="uid://dgrytitntqnif" path="res://assets/sprites/environment/tilesets/3777.png" id="17_w38x5"]
+[ext_resource type="Texture2D" uid="uid://dji7rlo3ca8wu" path="res://assets/sprites/environment/tilesets/purpleexample.png" id="18_slge8"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_hixqe"]
+resource_name = "tall_grass"
+scenes/1/scene = ExtResource("14_sillp")
+
+[sub_resource type="TileSet" id="TileSet_f244r"]
+sources/2 = SubResource("TileSetScenesCollectionSource_hixqe")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8a6jw"]
 atlas = ExtResource("2_vt53w")
@@ -100,10 +123,19 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sillp"]
+size = Vector2(14, 14)
+
 [node name="Overworld" type="Node2D"]
+script = ExtResource("1_sillp")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAMAP//AgAAAAAAAQAMAP7/AgAAAAAAAQAMAP3/AgAAAAAAAQAMAPz/AgAAAAAAAQAMAPv/AgAAAAAAAQANAPv/AgAAAAAAAQANAPz/AgAAAAAAAQANAP3/AgAAAAAAAQANAP7/AgAAAAAAAQANAP//AgAAAAAAAQACAAAAAgAAAAAAAQACAP//AgAAAAAAAQADAP//AgAAAAAAAQADAAAAAgAAAAAAAQAFAAAAAgAAAAAAAQAGAAAAAgAAAAAAAQAIAAAAAgAAAAAAAQA=")
+tile_set = SubResource("TileSet_f244r")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 script = ExtResource("1_rxuw6")
+metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 position = Vector2(8, 0)
@@ -111,22 +143,143 @@ sprite_frames = SubResource("SpriteFrames_kary1")
 animation = &"up_walk"
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-enabled = false
 
-[node name="TallGrass" type="Sprite2D" parent="."]
-position = Vector2(24, 40)
-texture = ExtResource("3_vt53w")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_sillp")
 
-[node name="TallGrass3" type="Sprite2D" parent="."]
-position = Vector2(56, 40)
-texture = ExtResource("3_vt53w")
+[node name="UI" type="CanvasLayer" parent="."]
 
-[node name="TallGrass4" type="Sprite2D" parent="."]
-position = Vector2(88, 40)
-texture = ExtResource("3_vt53w")
+[node name="Inventory" type="Control" parent="UI"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="TallGrass2" type="Sprite2D" parent="."]
-position = Vector2(8, 24)
-texture = ExtResource("3_vt53w")
-vframes = 5
-frame = 1
+[node name="BackgroundRect" type="TextureRect" parent="UI/Inventory"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_akgie")
+
+[node name="InventoryList" type="TextureRect" parent="UI/Inventory"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -49.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_ngjjw")
+stretch_mode = 2
+
+[node name="Dialog" type="TextureRect" parent="UI/Inventory"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 112.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_kary1")
+stretch_mode = 2
+
+[node name="ShadowBag" type="TextureRect" parent="UI/Inventory"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 11.0
+offset_top = 88.0
+offset_right = -171.0
+offset_bottom = -54.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_bl835")
+stretch_mode = 2
+
+[node name="Bag" type="TextureRect" parent="UI/Inventory"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 44.0
+offset_right = -168.0
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_opg1a")
+stretch_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="ItemIcons2" type="Sprite2D" parent="UI/Inventory"]
+position = Vector2(10, 126)
+scale = Vector2(0.888889, 0.888889)
+texture = ExtResource("4_8a6jw")
+centered = false
+hframes = 15
+vframes = 15
+frame = 6
+script = ExtResource("5_wec52")
+item = ExtResource("7_bi2s7")
+
+[node name="Label" type="Label" parent="UI/Inventory"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 9.0
+offset_right = 81.0
+offset_bottom = 24.0
+theme_override_colors/font_shadow_color = Color(0.419608, 0.419608, 0.419608, 1)
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("12_kary1")
+theme_override_font_sizes/font_size = 10
+text = "BERRY COUCH"
+
+[node name="BagArrowRight" type="Sprite2D" parent="UI/Inventory"]
+position = Vector2(72, 72)
+texture = ExtResource("13_bl835")
+hframes = 3
+vframes = 2
+frame = 4
+
+[node name="BagArrowLeft" type="Sprite2D" parent="UI/Inventory"]
+position = Vector2(8, 72)
+texture = ExtResource("13_bl835")
+hframes = 3
+vframes = 2
+frame = 3
+
+[node name="3771" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-8, -24)
+texture = ExtResource("15_lvc2m")
+centered = false
+
+[node name="3736" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(192, -360)
+texture = ExtResource("16_d3wmf")
+metadata/_edit_lock_ = true
+
+[node name="3777" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(480, -1024)
+texture = ExtResource("17_w38x5")
+
+[node name="OverworldTileset" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(648, -272)
+texture = ExtResource("13_hukvr")
+
+[node name="Purpleexample" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(416, 72)
+texture = ExtResource("18_slge8")

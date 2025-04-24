@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bk3vx6t3c72ke"]
+
+[ext_resource type="Texture2D" uid="uid://dsguih58ylaeu" path="res://assets/sprites/environment/tall_grass/tall_grass.png" id="1_8kh6a"]
+[ext_resource type="Script" uid="uid://qk4q63esm7wu" path="res://source/overworld/tall_grass/tall_grass.gd" id="2_jlyvy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_54k70"]
+size = Vector2(14, 14)
+
+[node name="TallGrass" type="Sprite2D"]
+texture = ExtResource("1_8kh6a")
+hframes = 6
+script = ExtResource("2_jlyvy")
+
+[node name="Area2D" type="Area2D" parent="."]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_54k70")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

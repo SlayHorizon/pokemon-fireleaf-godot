@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://cwwxtpgc5qaoa"]
+
+[ext_resource type="Texture2D" uid="uid://ep2ftuwn7ko8" path="res://assets/sprites/items/icons/item_icons.png" id="1_8vp86"]
+[ext_resource type="Script" uid="uid://7lo0gldfuhpd" path="res://source/system/item/item.gd" id="2_3hlmy"]
+
+[resource]
+script = ExtResource("2_3hlmy")
+item_name = &"antidote"
+icon_spritesheet = ExtResource("1_8vp86")
+custom_icon_index = -1
+metadata/_custom_type_script = "uid://7lo0gldfuhpd"

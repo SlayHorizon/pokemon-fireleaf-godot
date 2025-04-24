@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 Global="*res://source/autoload/global.gd"
 
+[debug]
+
+gdscript/warnings/integer_division=0
+
 [display]
 
 window/size/viewport_width=240

@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://ih7viwxxdle5"]
+
+[ext_resource type="Texture2D" uid="uid://dsguih58ylaeu" path="res://assets/sprites/environment/tall_grass/tall_grass.png" id="1_yniq8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lwodg"]
+atlas = ExtResource("1_yniq8")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nbt1d"]
+atlas = ExtResource("1_yniq8")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6wba"]
+atlas = ExtResource("1_yniq8")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xkrdv"]
+atlas = ExtResource("1_yniq8")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8mhmq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lwodg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nbt1d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x6wba")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xkrdv")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="TallGrassEffect" type="AnimatedSprite2D"]
+z_index = 2
+z_as_relative = false
+sprite_frames = SubResource("SpriteFrames_8mhmq")
+frame = 3
+frame_progress = 1.0
