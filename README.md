@@ -7,6 +7,8 @@ Created for technical exploration and educational purposes.
 
 This project is in early development, all contributions are welcome.
 
+![in-engine-screenshoot](./screenshot.png)
+
 ## License
 
 The **code** is licensed under the [MIT License](./LICENSE).
