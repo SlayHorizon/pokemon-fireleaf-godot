@@ -182,7 +182,8 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 position = Vector2(8, 0)
 sprite_frames = SubResource("SpriteFrames_kary1")
-animation = &"down"
+animation = &"up_walk"
+frame_progress = 0.454363
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 limit_left = 0
