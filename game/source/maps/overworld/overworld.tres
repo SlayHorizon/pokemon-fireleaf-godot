@@ -1,7 +1,7 @@
 [gd_resource type="TileSet" load_steps=5 format=3 uid="uid://dso5fmpetw1ja"]
 
 [ext_resource type="Texture2D" uid="uid://5ima6yd3ofae" path="res://assets/sprites/environment/tilesets/overworld_tileset.png" id="1_y85kr"]
-[ext_resource type="PackedScene" uid="uid://bk3vx6t3c72ke" path="res://source/overworld/tall_grass/tall_grass.tscn" id="2_djbhy"]
+[ext_resource type="PackedScene" uid="uid://bk3vx6t3c72ke" path="res://source/maps/common/tall_grass/tall_grass.tscn" id="2_djbhy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sillp"]
 texture = ExtResource("1_y85kr")

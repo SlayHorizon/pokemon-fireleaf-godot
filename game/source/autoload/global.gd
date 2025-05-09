@@ -1,10 +1,13 @@
 extends Node
 
 
+#signal level_changed()
+
 var version_cfg: ConfigFile
 var version: String = "FireRed"
 
 var item_index: Dictionary
+
 
 func _ready() -> void:
 	load_item_index()

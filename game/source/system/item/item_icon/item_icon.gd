@@ -18,4 +18,3 @@ func _set_item(new_item: Item) -> void:
 		frame = item.icon_index.get(item.item_name, 0)
 	else:
 		frame = item.custom_icon_index
-	print(frame)

@@ -35,7 +35,7 @@ func _input(_event: InputEvent) -> void:
 		startup_animation()
 	if Input.is_action_just_pressed("ui_accept") and can_press_start:
 		can_press_start = false
-		get_tree().change_scene_to_file("res://source/overworld/overworld.tscn")
+		get_tree().change_scene_to_file("res://source/maps/overworld/overworld.tscn")
 
 
 func default_state() -> void:
