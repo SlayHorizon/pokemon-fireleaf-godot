@@ -75,7 +75,7 @@ material = SubResource("ShaderMaterial_ps8sl")
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
-[node name="FireredPokemonArt" type="Sprite2D" parent="Sprites"]
+[node name="PokemonArt" type="Sprite2D" parent="Sprites"]
 use_parent_material = true
 texture = ExtResource("2_ifn6v")
 centered = false
@@ -85,7 +85,7 @@ use_parent_material = true
 texture = ExtResource("3_ps8sl")
 centered = false
 
-[node name="FireredTitleLogo" type="Sprite2D" parent="Sprites"]
+[node name="VersionTitleLogo" type="Sprite2D" parent="Sprites"]
 use_parent_material = true
 position = Vector2(87, 88)
 texture = ExtResource("4_p87ct")

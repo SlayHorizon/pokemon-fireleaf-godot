@@ -7,7 +7,7 @@ const DEFAULT_COLORSETS: Dictionary = {
 		"middle_color": "5cb1a4",
 		"bottom_color": "831c08"
 	},
-	"GreenLeaf":  {
+	"LeafGreen":  {
 		"top_color": "317813",
 		"middle_color": "dc7f5c",
 		"bottom_color": "317813"
@@ -17,7 +17,6 @@ const DEFAULT_COLORSETS: Dictionary = {
 var tween: Tween
 var can_press_start: bool = false
 
-
 @onready var sprites: Node2D = $Sprites
 @onready var top_color_rect: ColorRect = $TopColorRect
 @onready var middle_color_rect: ColorRect = $MiddleColorRect
@@ -25,7 +24,7 @@ var can_press_start: bool = false
 
 
 func _ready() -> void:
-	set_version_theme(Global.version)
+	set_version_theme(Global.version_name)
 	default_state()
 	startup_animation.call_deferred()
 
@@ -77,11 +76,15 @@ func startup_animation() -> void:
 
 
 func set_version_theme(version: String) -> void:
-	if DEFAULT_COLORSETS.has(version):
+	if Global.version_config:
+		top_color_rect.color = Global.version_config.get_value("TitleScreen", "top_color", top_color_rect.color)
+		middle_color_rect.color = Global.version_config.get_value("TitleScreen", "middle_color", middle_color_rect.color)
+		bottom_color_rect.color = Global.version_config.get_value("TitleScreen", "bottom_color", bottom_color_rect.color)
+		if ResourceLoader.exists(Global.version_config.get_value("TitleScreen", "pokemon_art")):
+			$Sprites/PokemonArt.texture = load(Global.version_config.get_value("TitleScreen", "pokemon_art"))
+		if ResourceLoader.exists(Global.version_config.get_value("TitleScreen", "version_logo")):
+			$Sprites/VersionTitleLogo.texture = load(Global.version_config.get_value("TitleScreen", "version_logo"))
+	elif DEFAULT_COLORSETS.has(version):
 		top_color_rect.color = Color(DEFAULT_COLORSETS[version].top_color)
 		middle_color_rect.color = Color(DEFAULT_COLORSETS[version].middle_color)
 		bottom_color_rect.color = Color(DEFAULT_COLORSETS[version].bottom_color)
-	elif Global.version_cfg:
-		top_color_rect.color = Global.version_cfg.get_value("TitleScreen", "top_color", top_color_rect.color)
-		middle_color_rect.color = Global.version_cfg.get_value("TitleScreen", "middle_color", middle_color_rect.color)
-		bottom_color_rect.color = Global.version_cfg.get_value("TitleScreen", "bottom_color", bottom_color_rect.color)

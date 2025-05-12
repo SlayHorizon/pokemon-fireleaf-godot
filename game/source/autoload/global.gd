@@ -3,8 +3,8 @@ extends Node
 
 #signal level_changed()
 
-var version_cfg: ConfigFile
-var version: String = "FireRed"
+var version_config: ConfigFile
+var version_name: String = "FireRed"
 
 var item_index: Dictionary
 
