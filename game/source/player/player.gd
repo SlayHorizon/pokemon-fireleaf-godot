@@ -27,6 +27,9 @@ func _ready() -> void:
 	ground = map_root.get_child(0)
 	upper_ground = map_root.get_child(1)
 	snap_to_grid_map()
+	if Global.version_config:
+		if ResourceLoader.exists(Global.version_config.get_value("Player", "normal_sprite")):
+			swap_textures(load(Global.version_config.get_value("Player", "normal_sprite")))
 
 
 func _physics_process(_delta: float) -> void:
@@ -34,7 +37,7 @@ func _physics_process(_delta: float) -> void:
 	
 	# Update stack based on pressed inputs
 	update_input_stack()
-
+	
 	# Use the last input in the stack if available
 	if input_stack.size():
 		match input_stack[-1]: # Last item
@@ -42,7 +45,7 @@ func _physics_process(_delta: float) -> void:
 			"down": input_vector = Vector2.DOWN
 			"left": input_vector = Vector2.LEFT
 			"right": input_vector = Vector2.RIGHT
-
+	
 	if not is_moving:
 		if input_vector:
 			try_to_move(input_vector)
@@ -57,12 +60,12 @@ func update_input_stack():
 		"left": Input.is_action_pressed("ui_left"),
 		"right": Input.is_action_pressed("ui_right")
 	}
-
+	
 	# Remove any keys no longer pressed
 	for key in input_stack.duplicate():
 		if !directions.get(key, false):
 			input_stack.erase(key)
-
+	
 	# Add newly pressed keys
 	for key in directions.keys():
 		if directions[key] and not input_stack.has(key):
@@ -103,7 +106,7 @@ func _on_movement_finished(direction: Vector2) -> void:
 		#set_animation(direction)
 
 
-func set_animation(direction: Vector2, state: String = "") -> void:
+func set_animation(direction: Vector2, state: String = "_idle") -> void:
 	if direction.x:
 		animated_sprite_2d.play("side" + state)
 		animated_sprite_2d.flip_h = direction.x > 0
@@ -111,3 +114,11 @@ func set_animation(direction: Vector2, state: String = "") -> void:
 		animated_sprite_2d.play("down" + state)
 	elif direction.y < 0:
 		animated_sprite_2d.play("up" + state)
+
+
+func swap_textures(p_texture: Texture2D) -> void:
+	var sprite_frames: SpriteFrames = $AnimatedSprite2D.sprite_frames
+	for anim_name in sprite_frames.get_animation_names():
+		for i in sprite_frames.get_frame_count(anim_name):
+			var texture: AtlasTexture = sprite_frames.get_frame_texture(anim_name, i)
+			texture.atlas = p_texture
