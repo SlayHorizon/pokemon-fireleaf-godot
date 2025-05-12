@@ -1,6 +1,6 @@
 # Pokémon FireLeaf
 
-Open-source remake of Pokémon FireRed and LeafGreen built with Godot 4.4.  
+Open-source remake of Pokémon FireRed and LeafGreen built with Godot 4.4.1.  
 Created for technical exploration and educational purposes.
 
 ## Project Status
@@ -8,6 +8,7 @@ Created for technical exploration and educational purposes.
 This project is in early development, all contributions are welcome.
 
 ![in-engine-screenshoot](./screenshot.png)
+![in-engine-screenshoot](./title_screen_screenshot.png)
 
 ## License
 
