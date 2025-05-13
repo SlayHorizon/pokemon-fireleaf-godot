@@ -47,7 +47,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_8a6jw")
 }],
 "loop": true,
-"name": &"down",
+"name": &"down_idle",
 "speed": 5.0
 }, {
 "frames": [{
@@ -66,7 +66,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_bi2s7")
 }],
 "loop": true,
-"name": &"side",
+"name": &"side_idle",
 "speed": 5.0
 }, {
 "frames": [{
@@ -85,7 +85,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_jrbyy")
 }],
 "loop": true,
-"name": &"up",
+"name": &"up_idle",
 "speed": 5.0
 }, {
 "frames": [{
@@ -110,7 +110,7 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(8, 0)
 sprite_frames = SubResource("SpriteFrames_kary1")
-animation = &"down"
+animation = &"up_idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(8, 8)
