@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://dyn4yihale53c"]
+[gd_scene load_steps=19 format=4 uid="uid://dyn4yihale53c"]
 
 [ext_resource type="Script" uid="uid://cf8vflpy3tw5x" path="res://source/maps/overworld/overworld.gd" id="1_sillp"]
 [ext_resource type="TileSet" uid="uid://dso5fmpetw1ja" path="res://source/maps/overworld/overworld.tres" id="2_hukvr"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://frcnox7u1ra6" path="res://source/maps/pallet_town/player_house_2f.tscn" id="4_bsp47"]
 [ext_resource type="PackedScene" uid="uid://bxq8b7h4qppqi" path="res://source/player/player.tscn" id="4_lxh0y"]
 [ext_resource type="Script" uid="uid://bpr5jqp60g4d5" path="res://source/system/item/item_icon/item_icon.gd" id="5_wec52"]
+[ext_resource type="PackedScene" uid="uid://cpww7ic057jxy" path="res://source/maps/common/environment_area/environment_area.tscn" id="6_bsp47"]
 [ext_resource type="Texture2D" uid="uid://cqnb0oca14drf" path="res://assets/sprites/gui/backgrounds/bg_blue.png" id="7_akgie"]
 [ext_resource type="Resource" uid="uid://dw5gjjjwxarp0" path="res://source/system/item/collection/aurora_ticket.tres" id="7_bi2s7"]
 [ext_resource type="Texture2D" uid="uid://vs4sb5t4jpa1" path="res://assets/sprites/gui/inventory/inventory_list.png" id="8_ngjjw"]
@@ -16,6 +17,9 @@
 [ext_resource type="Texture2D" uid="uid://di3f1uyghpmal" path="res://assets/sprites/gui/inventory/bags/berry_pouch.png" id="11_opg1a"]
 [ext_resource type="FontFile" uid="uid://c2on4rplk6ncr" path="res://assets/fonts/pokemon-firered-leafgreen-font.otf" id="12_kary1"]
 [ext_resource type="Texture2D" uid="uid://bb0bwgjoigooh" path="res://assets/sprites/gui/inventory/bags/arrows.png" id="13_bl835"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hjlpr"]
+size = Vector2(384, 320)
 
 [node name="Overworld" type="Node2D" node_paths=PackedStringArray("main_tilemap_layer")]
 script = ExtResource("1_sillp")
@@ -74,6 +78,13 @@ exit_direction = 1
 [node name="PlayerHouseWarper" parent="PalletTown" node_paths=PackedStringArray("target") instance=ExtResource("3_n833l")]
 position = Vector2(104, 120)
 target = NodePath("../PlayerHouse1F/PlayerHouseWarper")
+
+[node name="EnvironmentArea" parent="PalletTown" instance=ExtResource("6_bsp47")]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PalletTown/EnvironmentArea"]
+position = Vector2(192, 160)
+shape = SubResource("RectangleShape2D_hjlpr")
 
 [node name="Player" parent="." node_paths=PackedStringArray("map_root") instance=ExtResource("4_lxh0y")]
 position = Vector2(182, 101)

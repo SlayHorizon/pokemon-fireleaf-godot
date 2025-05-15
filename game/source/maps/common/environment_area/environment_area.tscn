@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpww7ic057jxy"]
+
+[ext_resource type="Script" uid="uid://drs1wdud5u6mw" path="res://source/maps/common/environment_area/environment_area.gd" id="1_srd07"]
+[ext_resource type="AudioStream" uid="uid://rgbotlckbijs" path="res://assets/audio/music/pallet_town.mp3" id="2_a4r0c"]
+
+[node name="EnvironmentArea" type="Area2D"]
+monitorable = false
+script = ExtResource("1_srd07")
+music = ExtResource("2_a4r0c")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
