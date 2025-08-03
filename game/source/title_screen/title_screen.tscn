@@ -91,7 +91,6 @@ position = Vector2(87, 88)
 texture = ExtResource("4_p87ct")
 
 [node name="PressStart" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(86, 126)
 texture = ExtResource("6_p87ct")
 

@@ -1,7 +1,7 @@
 extends Control
 
 
-const DEFAULT_COLORSETS: Dictionary = {
+const DEFAULT_COLORSETS: Dictionary[String, Dictionary] = {
 	"FireRed":  {
 		"top_color": "831c08",
 		"middle_color": "5cb1a4",
@@ -17,7 +17,14 @@ const DEFAULT_COLORSETS: Dictionary = {
 var tween: Tween
 var can_press_start: bool = false
 
+# Sprites
 @onready var sprites: Node2D = $Sprites
+@onready var pokemon_art: Sprite2D = $Sprites/PokemonArt
+@onready var version_title_logo: Sprite2D = $Sprites/VersionTitleLogo
+@onready var press_start: Sprite2D = $PressStart
+
+
+# ColorRects
 @onready var top_color_rect: ColorRect = $TopColorRect
 @onready var middle_color_rect: ColorRect = $MiddleColorRect
 @onready var bottom_color_rect: ColorRect = $BottomColorRect
@@ -40,6 +47,7 @@ func _input(_event: InputEvent) -> void:
 func default_state() -> void:
 	sprites.hide()
 	can_press_start = false
+	press_start.hide()
 	top_color_rect.position.x += top_color_rect.size.x
 	middle_color_rect.position.x -= middle_color_rect.size.x
 	bottom_color_rect.position.x -= bottom_color_rect.size.x
@@ -71,8 +79,8 @@ func startup_animation() -> void:
 	
 	tween = create_tween()
 	tween.set_loops()
-	tween.tween_callback($PressStart.show).set_delay(0.6)
-	tween.tween_callback($PressStart.hide).set_delay(0.6)
+	tween.tween_callback(press_start.show).set_delay(0.6)
+	tween.tween_callback(press_start.hide).set_delay(0.6)
 
 
 func set_version_theme(version: String) -> void:
@@ -81,9 +89,9 @@ func set_version_theme(version: String) -> void:
 		middle_color_rect.color = Global.version_config.get_value("TitleScreen", "middle_color", middle_color_rect.color)
 		bottom_color_rect.color = Global.version_config.get_value("TitleScreen", "bottom_color", bottom_color_rect.color)
 		if ResourceLoader.exists(Global.version_config.get_value("TitleScreen", "pokemon_art")):
-			$Sprites/PokemonArt.texture = load(Global.version_config.get_value("TitleScreen", "pokemon_art"))
+			pokemon_art.texture = load(Global.version_config.get_value("TitleScreen", "pokemon_art"))
 		if ResourceLoader.exists(Global.version_config.get_value("TitleScreen", "version_logo")):
-			$Sprites/VersionTitleLogo.texture = load(Global.version_config.get_value("TitleScreen", "version_logo"))
+			version_title_logo.texture = load(Global.version_config.get_value("TitleScreen", "version_logo"))
 	elif DEFAULT_COLORSETS.has(version):
 		top_color_rect.color = Color(DEFAULT_COLORSETS[version].top_color)
 		middle_color_rect.color = Color(DEFAULT_COLORSETS[version].middle_color)

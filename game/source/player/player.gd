@@ -9,14 +9,14 @@ const TILE_SIZE: int = 16
 var ground: TileMapLayer
 var upper_ground: TileMapLayer
 
-## Movements
+# Movements
 var movement_tween: Tween
 var movement_duration: float = 0.2
 var is_moving: bool = false
 
 var input_vector: Vector2
 var last_input_vector: Vector2
-var input_stack: Array[String] = []
+var input_stack: Array[String]
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
